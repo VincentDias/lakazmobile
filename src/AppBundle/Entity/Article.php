@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -24,7 +25,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="Name", type="string", length=255)
+     * @ORM\Column(name="Name", type="string", length=255, nullable = false)
      */
     private $name;
 
@@ -39,7 +40,7 @@ class Article
      *
      * @var AppBundle\Entity\ArticleImage
      * @ORM\OneToOne(targetEntity=\AppBundle\Entity\ArticleImage::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="articleimage_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="articleimage_id", referencedColumnName="id", nullable=false)
      * 
      */
     private $articleImage;
