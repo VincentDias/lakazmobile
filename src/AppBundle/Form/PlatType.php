@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class PlatType extends AbstractType
 {
@@ -16,7 +16,7 @@ class PlatType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
+            ->add('description', CKEditorType::class)
             ->add('price')
             ->add('image', ImageType::class)
             ->add('available')
