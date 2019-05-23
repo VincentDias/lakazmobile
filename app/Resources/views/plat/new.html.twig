@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Création d'un nouveau plat</h1>
+
+                {{ form_start(form, {'attr':{'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            {{ form_label(form.name, 'Nom du plat')}}
+                            {{ form_widget(form.name, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.name)}}
+                        
+                            {{ form_label(form.description, 'Description du plat')}}
+                            {{ form_widget(form.description, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.description)}}
+                        
+                            {{ form_label(form.price, 'Prix du plat')}}
+                            {{ form_widget(form.price, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.price)}}
+
+                            {{ form_label(form.categoryName, 'Catégorie')}}
+                            {{ form_widget(form.categoryName, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.categoryName)}}
+
+                            {{ form_label(form.image.name, 'Titre de l\'image')}}
+                            {{ form_widget(form.image.name, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.image.name)}}
+                        
+                            {{ form_label(form.image.alt, 'Mots clés de l\'image')}}
+                            {{ form_widget(form.image.alt, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.image.alt)}}
+                        
+                            {{ form_label(form.image.pathImage, 'Choisir un fichier')}}
+                            {{ form_widget(form.image.pathImage, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.image.pathImage)}}
+
+                            {{ form_label(form.available, 'Disponibilité')}}
+                            {{ form_widget(form.available, {'attr':{'class':'form-check', 'style':'justify-content-center'}})}}
+                            {{ form_errors(form.available)}}
+                        </div>
+                    </div>
+                </div>
+
+
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-warning">Ajouter</button>
+                {{ form_end(form) }}
+
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('article_index') }}">Revenir à la liste des plats</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

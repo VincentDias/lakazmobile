@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Modification d'un article</h1>
+
+                {{ form_start(edit_form, {'attr':{'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12">
+                            {{ form_label(edit_form.name, 'Titre de l\'image')}}
+                            {{ form_widget(edit_form.name, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(edit_form.name)}}
+                        
+                            {{ form_label(edit_form.description, 'Description')}}
+                            {{ form_widget(edit_form.description, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(edit_form.description)}}
+                        
+                            {{ form_label(edit_form.articleImage.name, 'Titre de l\'image')}}
+                            {{ form_widget(edit_form.articleImage.name, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(edit_form.articleImage.name)}}
+                        
+                            {{ form_label(edit_form.articleImage.alt, 'Mots clés de l\'image')}}
+                            {{ form_widget(edit_form.articleImage.alt, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(edit_form.articleImage.alt)}}
+                        
+                            {{ form_label(edit_form.articleImage.pathImage, 'Choisir une image')}}
+                            {{ form_widget(edit_form.articleImage.pathImage, {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(edit_form.articleImage.pathImage)}}
+                        </div>
+                    </div>
+                </div>
+
+
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-warning" type="submit" value="Edit"/>
+                {{ form_end(edit_form) }}
+
+                <div class="col-sm-12 col-md-12 col-lg-6 justify">
+                    {{ form_start(delete_form) }}
+                        <button class="btn btn-warning" type="submit">Supprimer</button>
+                    {{ form_end(delete_form) }}
+
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('article_index') }}">Revenir à la liste des articles</a>
+                </button>
+                
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

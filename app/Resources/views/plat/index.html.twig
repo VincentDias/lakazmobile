@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+     <link rel="stylesheet" href="/assets/css/lightbox.min.css">
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Les dégustations de la Kaz'Mobile</h1>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Entrées</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% include 'plat/list.html' with {plats: entrees} %}
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+            {% if is_granted("ROLE_ADMIN") %}
+        
+                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter une nouvelle entrée</a></button>
+           
+    {% endif %}
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Bokits et Plat du jour</h2>
+        </div>
+    </div>
+            {% include 'plat/list.html' with {plats: plats} %}
+    <div class="row d-flex justify-content-center">
+            {% if is_granted("ROLE_ADMIN") %}
+        
+                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}" >Ajouter un nouveau plat</a></button>
+           
+    {% endif %}
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Desserts</h2>
+        </div>
+    </div>
+            {% include 'plat/list.html' with {plats: desserts} %}
+    <div class="row d-flex justify-content-center">
+            {% if is_granted("ROLE_ADMIN") %}
+        
+                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter un nouveau dessert</a></button>
+           
+    {% endif %}
+    </div>
+   
+
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Boissons</h2>
+        </div>
+    </div>
+            {% include 'plat/list.html' with {plats: boissons} %}
+    <div class="row d-flex justify-content-center">
+            {% if is_granted("ROLE_ADMIN") %}
+        
+                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter une nouvelle boisson </a></button>
+           
+    {% endif %}
+    </div>
+    
+    
+        
+    
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="/assets/js//lightbox-plus-jquery.min.js"></script>
+{% endblock %}

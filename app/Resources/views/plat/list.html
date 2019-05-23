@@ -1,0 +1,40 @@
+{% for plat in plats %}
+
+    <div class="row d-flex justify-content-center">
+ 
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-around">
+            <div class="row">
+                <div class="col-12">
+                    <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit">
+                        <img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}" width="250" height="250"/>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ">
+                        <div class="col-12">
+                            <h3>
+                                {{ plat.name }}</h3>
+                            <article >
+                                {{ plat.description }}</article>
+                            <span>
+                                {{ plat.price }}€
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <a href="{{ path('plat_edit', { 'id': plat.id }) }}">
+                    <button class="btn btn-warning" type="button">Modifier</button>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

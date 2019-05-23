@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Plat</h1>
+
+    <table>
+        <tbody>
+            <!--<tr>
+                <th>Id</th>
+                <td>{{ plat.id }}</td>
+            </tr>
+            -->
+            <tr>
+                <th>Titre</th>
+                <td>{{ plat.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ plat.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ plat.price }} </td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ plat.image }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ plat.categoryName }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilité</th>
+                <td>{% if plat.available %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('plat_index') }}">Retour à la liste des produits</a>
+        </li>
+        <li>
+            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+

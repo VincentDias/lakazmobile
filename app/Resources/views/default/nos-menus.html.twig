@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Les dégustations de la Kaz'Mobile</h1>
+
+    
+    <ul>
+        <li>
+            <a href="{{ path('plat_index') }}">Retour à la liste des produits</a>
+        </li>
+        <li>
+            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

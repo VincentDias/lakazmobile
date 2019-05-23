@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="/assets/css/lightbox.min.css" rel="stylesheet">
+    {% endblock %}
+    {% block body %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>Articles</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {% for article in articles %}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center">
+                                <a href="{{ asset('upload/article_images/' ~ article.articleImage) }}" data-lightbox="image_produit"><img src="{{ asset('upload/article_images/' ~ article.articleImage) }}" alt="{{(article.articleImage.alt)}}"/></a>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-8 ">
+                                <div class="d-flex justify-content-center">
+                                    <h2>
+                                        {{ article.name }}</h2>
+                                </div>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-8 d-flex justify-content-center">
+                                        <article>
+                                            {{ article.description }}</article>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <button class="btn btn-warning" type="button">
+                                        <a href="{{ path('article_edit', { 'id': article.id }) }}">Modifier</a>
+                                    </button>                   
+                                </div>
+                            {% endif %}
+                        </div>
+                        <hr>
+                    {% endfor %}
+                    </div>
+                </div>
+            
+        </div>
+        {% if is_granted("ROLE_ADMIN") %}
+            <div class="col-12 text-center">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('article_new') }}">Créer un nouvel article</a>
+                </button>
+            </div>
+        {% endif %}
+    {% endblock %}
+    {% block javascripts %}
+        <script src="/assets/js//lightbox-plus-jquery.min.js"></script>
+    {% endblock %}
