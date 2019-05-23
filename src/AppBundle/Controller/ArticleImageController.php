@@ -3,13 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\ArticleImage;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Articleimage controller.
@@ -49,7 +46,7 @@ class ArticleImageController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $file stores the uploaded PDF file
+            // $file stores the uploaded file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $articleImage->getPathImage();
             
@@ -59,7 +56,7 @@ class ArticleImageController extends Controller
             $file->move($this->getParameter('article_image_directory'), $fileName);
 
 
-            // updates the 'image' property to store the PDF file name
+            // updates the 'image' property to store the file name
             // instead of its contents
             $articleImage->setPathImage($fileName);
 

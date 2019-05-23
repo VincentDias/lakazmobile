@@ -63,7 +63,7 @@ class PlatController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            // $file stores the uploaded PDF file
+            // $file stores the uploaded file
                 /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
                 $file = $plat->getImage()->getPathImage();
     
@@ -72,7 +72,7 @@ class PlatController extends Controller
                 $file->move($this->getParameter('image_directory'), $fileName);
 
                 
-                // updates the 'image' property to store the PDF file name
+                // updates the 'image' property to store the file name
                 // instead of its contents
                 $plat->getImage()->setPathImage($fileName);
 
@@ -129,7 +129,7 @@ class PlatController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            // $file stores the uploaded PDF file
+            // $file stores the uploaded file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $plat->getImage()->getPathImage();
 
@@ -138,7 +138,7 @@ class PlatController extends Controller
             $file->move($this->getParameter('image_directory'), $fileName);
 
             
-            // updates the 'image' property to store the PDF file name
+            // updates the 'image' property to store the file name
             // instead of its contents
             $plat->getImage()->setPathImage($fileName);
 

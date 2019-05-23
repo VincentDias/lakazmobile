@@ -3,13 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Image;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Image controller.
@@ -49,7 +46,7 @@ class ImageController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $file stores the uploaded PDF file
+            // $file stores the uploaded file
                 /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
                 $file = $image->getPathImage();
     
@@ -58,7 +55,7 @@ class ImageController extends Controller
                 $file->move($this->getParameter('image_directory'), $fileName);
 
                 
-                // updates the 'image' property to store the PDF file name
+                // updates the 'image' property to store the file name
                 // instead of its contents
                 $image->setPathImage($fileName);
 

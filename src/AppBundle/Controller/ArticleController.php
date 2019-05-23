@@ -47,7 +47,7 @@ class ArticleController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $file stores the uploaded PDF file
+            // $file stores the uploaded file
                 /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
                 $file = $article->getArticleImage()->getPathImage();
     
