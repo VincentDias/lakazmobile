@@ -38,7 +38,7 @@ class Plat
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=\AppBundle\Entity\Category::class, inversedBy="plat")
+     * @ORM\ManyToOne(targetEntity=\AppBundle\Entity\Category::class)
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     protected $categoryName;

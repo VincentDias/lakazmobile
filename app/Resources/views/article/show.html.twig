@@ -15,17 +15,9 @@
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-8">
                             <h1>{{ article.name }}</h1>
-                            <div>{{ article.description }}</div>
+                            <div>{{ article.description | raw }}</div>
                     </div>   
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-">
-                <button class="btn btn-warning" type="button">
-                    <a href="{{ path('article_index') }}">Back to the list</a>
-                </button>
             </div>
         </div>
 
@@ -35,18 +27,19 @@
                     <a href="{{ path('article_edit', { 'id': article.id }) }}">Modifier</a>
                 </button>
             </div>
-        {% endif %}
-    
-           
-               
-            
-            
-    <ul>
-        
-        <li>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <div class="col-12 text-center">
+                <button class="btn btn-warning" type="submit" value="Delete">Supprimer</button>
+            </div>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('article_index') }}">Back to the list</a>
+                </button>
+            </div>
+        </div>
 {% endblock %}
