@@ -106,10 +106,30 @@ class ImageController extends Controller
         $editForm = $this->createForm('AppBundle\Form\ImageType', $image);
         $editForm->handleRequest($request);
 
+        $image_plat=$image->getPathImage();
+        $pathImage=$this->getParameter('article_image_directory').'/'.$image_plat;
+
+        $fs= new Filesystem();
+        $fs->remove(array($pathImage));
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            // $file stores the uploaded file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $image->getPathImage();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move($this->getParameter('image_directory'), $fileName);
+
+            // updates the 'image' property to store the file name
+            // instead of its contents
+            $image->setPathImage($fileName);
+
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('image_edit', array('id' => $image->getId()));
+            return $this->redirectToRoute('plat_show', array('id' => $image->getId()));
         }
 
         return $this->render('image/edit.html.twig', array(

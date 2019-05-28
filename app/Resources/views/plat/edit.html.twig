@@ -24,22 +24,10 @@
                             {{ form_widget(edit_form.categoryName, {'attr':{'class':'form-control'}})}}
                             {{ form_errors(edit_form.categoryName)}}
 
-                            {{ form_label(edit_form.image.name, 'Titre de l\'image')}}
-                            {{ form_widget(edit_form.image.name, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.image.name)}}
-                        
-                            {{ form_label(edit_form.image.alt, 'Mots clés de l\'image')}}
-                            {{ form_widget(edit_form.image.alt, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.image.alt)}}
-
-                            {{ form_label(edit_form.image.pathImage, 'Choisir un fichier')}}
-                            {{ form_widget(edit_form.image.pathImage, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.image.pathImage)}}
-                            <div class="d-flex justify-content-center">
+                            
                             {{ form_label(edit_form.available, 'Disponibilité')}}
                             {{ form_widget(edit_form.available, {'attr':{'class':'form-check'}})}}
                             {{ form_errors(edit_form.available)}}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +46,7 @@
                     </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <button class="btn btn-warning" type="button" value="{{ path('article_index') }}">Revenir à la liste des plats</button>
+                        <button class="btn btn-warning" type="button" value="{{ path('plat_index') }}">Revenir à la liste des plats</button>
                     
                 </div>
             </div>

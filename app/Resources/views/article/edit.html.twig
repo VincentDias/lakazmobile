@@ -10,25 +10,13 @@
                 <div class="form-group">
                     <div class="row d-flex justify-content-center">
                         <div class="col-6">
-                            {{ form_label(edit_form.name, 'Titre de l\'image')}}
+                            {{ form_label(edit_form.name, 'Titre de l\'article')}}
                             {{ form_widget(edit_form.name, {'attr':{'class':'form-control'}})}}
                             {{ form_errors(edit_form.name)}}
                         
-                            {{ form_label(edit_form.description, 'Description')}}
+                            {{ form_label(edit_form.description, 'Contenu de l\'article')}}
                             {{ form_widget(edit_form.description, {'attr':{'class':'form-control'}})}}
                             {{ form_errors(edit_form.description)}}
-                        
-                            {{ form_label(edit_form.articleImage.name, 'Titre de l\'image')}}
-                            {{ form_widget(edit_form.articleImage.name, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.articleImage.name)}}
-                        
-                            {{ form_label(edit_form.articleImage.alt, 'Mots clés de l\'image')}}
-                            {{ form_widget(edit_form.articleImage.alt, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.articleImage.alt)}}
-                        
-                            {{ form_label(edit_form.articleImage.pathImage, 'Choisir une image')}}
-                            {{ form_widget(edit_form.articleImage.pathImage, {'attr':{'class':'form-control'}})}}
-                            {{ form_errors(edit_form.articleImage.pathImage)}}
                         </div>
                     </div>
                 </div>

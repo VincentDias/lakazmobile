@@ -30,11 +30,9 @@
     </div>
     {% if is_granted("ROLE_ADMIN") %}
         <div class="row d-flex justify-content-center">
-            <div class="col-6">
-                <a href="{{ path('plat_edit', { 'id': plat.id }) }}">
-                    <button class="btn btn-warning" type="button">Modifier</button>
-                </a>
-            </div>
+            <a href="{{ path('plat_show', { 'id': plat.id }) }}">
+                <button class="btn btn-warning" type="button">Modifier</button>
+            </a>
         </div>
     {% endif %}
 {% endfor %}

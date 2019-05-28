@@ -104,10 +104,30 @@ class ArticleImageController extends Controller
         $editForm = $this->createForm('AppBundle\Form\ArticleImageType', $articleImage);
         $editForm->handleRequest($request);
 
+        $image=$articleImage->getPathImage();
+        $pathImage=$this->getParameter('article_image_directory').'/'.$image;
+
+        $fs= new Filesystem();
+        $fs->remove(array($pathImage));
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            // $file stores the uploaded file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $articleImage->getPathImage();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move($this->getParameter('article_image_directory'), $fileName);
+            
+            // updates the 'image' property to store the file name
+            // instead of its contents
+            $articleImage->setPathImage($fileName);
+
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('articleimage_edit', array('id' => $articleImage->getId()));
+            return $this->redirectToRoute('article_index', array('id' => $articleImage->getId()));
         }
 
         return $this->render('articleimage/edit.html.twig', array(

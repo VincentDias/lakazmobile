@@ -118,30 +118,10 @@ class PlatController extends Controller
     public function editAction(Request $request, Plat $plat)
     {
         $deleteForm = $this->createDeleteForm($plat);
-        $editForm = $this->createForm('AppBundle\Form\PlatType', $plat);
+        $editForm = $this->createForm('AppBundle\Form\PlatType1', $plat);
         $editForm->handleRequest($request);
 
-        $image=$plat->getImage()->getPathImage();
-        $pathImage=$this->getParameter('image_directory').'/'.$image;
-        //unlink(''.$path);
-        $fs= new Filesystem();
-        $fs->remove(array($pathImage));
-
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-            // $file stores the uploaded file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $plat->getImage()->getPathImage();
-
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-            $file->move($this->getParameter('image_directory'), $fileName);
-
-            
-            // updates the 'image' property to store the file name
-            // instead of its contents
-            $plat->getImage()->setPathImage($fileName);
 
             $this->getDoctrine()->getManager()->flush();
 

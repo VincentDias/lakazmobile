@@ -1,56 +1,57 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
-    <h1>Plat</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Plat</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-4">
+                        <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit"><img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}"/></a>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-8">
+                            <h1>{{ plat.name }}</h1>
+                            <div>{{ plat.description | raw }}</div>
+                            <div>{{ plat.price }}</div>
+                            <div>{{ plat.categoryName }}</div>
+                            <div>{{ plat.available }}</div>
 
-    <table>
-        <tbody>
-            <!--<tr>
-                <th>Id</th>
-                <td>{{ plat.id }}</td>
-            </tr>
-            -->
-            <tr>
-                <th>Titre</th>
-                <td>{{ plat.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ plat.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ plat.price }} </td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ plat.image }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ plat.categoryName }}</td>
-            </tr>
-            <tr>
-                <th>Disponibilité</th>
-                <td>{% if plat.available %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+                    </div>   
+                </div>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('plat_index') }}">Retour à la liste des produits</a>
-        </li>
-        <li>
-            <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Editer</a>
-        </li>
-        <li>
+        {% if is_granted("ROLE_ADMIN") %}
+        <div class="row text-center">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('image_edit', { 'id': plat.id }) }}">Modifier l'image</a>
+                </button>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Modifier le plat</a>
+                </button>
+            </div>
+        </div>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
+            <div class="col-12 text-center">
+                <button class="btn btn-warning" type="submit" value="Delete">Supprimer</button>
+            </div>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+        {% endif %}
 
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('plat_index') }}">Back to the list</a>
+                </button>
+            </div>
+        </div>
+{% endblock %}

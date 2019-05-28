@@ -101,29 +101,11 @@ class ArticleController extends Controller
     public function editAction(Request $request, Article $article)
     {
         $deleteForm = $this->createDeleteForm($article);
-        $editForm = $this->createForm('AppBundle\Form\ArticleType', $article);
+        $editForm = $this->createForm('AppBundle\Form\ArticleType1', $article);
         $editForm->handleRequest($request);
-
-        $image=$article->getArticleImage();
-        $pathImage=$this->getParameter('article_image_directory').'/'.$image;
-        //unlink(''.$path);
-        $fs= new Filesystem();
-        $fs->remove(array($pathImage));
 
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-            // $file stores the uploaded file
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-                $file = $article->getArticleImage()->getPathImage();
-    
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
-    
-                $file->move($this->getParameter('article_image_directory'), $fileName);
-                
-                // updates the 'image' property to store the file name
-                // instead of its contents
-                $article->getArticleImage()->setPathImage($fileName);
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -136,6 +118,7 @@ class ArticleController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Deletes a article entity.
