@@ -2,16 +2,17 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h1>Modification de l'image</h1>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 {{ form_start(edit_form, {'attr':{'novalidate': 'novalidate'}}) }}
-
                 <div class="form-group">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-6">
-                            
-                        
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                             {{ form_label(edit_form.name, 'Titre de l\'image')}}
                             {{ form_widget(edit_form.name, {'attr':{'class':'form-control'}})}}
                             {{ form_errors(edit_form.name)}}
@@ -23,20 +24,23 @@
                             {{ form_label(edit_form.pathImage, 'Choisir une image')}}
                             {{ form_widget(edit_form.pathImage, {'attr':{'class':'form-control'}})}}
                             {{ form_errors(edit_form.pathImage)}}
+                       
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                    {{ form_widget(edit_form) }}
+                                    <input class="btn btn-warning" type="submit" value="Enregistrer"/>
+                                    {{ form_end(edit_form) }}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                    <button class="btn btn-warning" type="button">
+                                        <a href="{{ path('plat_index') }}">Retour</a>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-                {{ form_widget(edit_form) }}
-                <input class="btn btn-warning" type="submit" value="Enregistrer"/>
-                {{ form_end(edit_form) }}
-
-                <button class="btn btn-warning" type="button">
-                    <a href="{{ path('plat_index') }}">Revenir à la liste des plats</a>
-                </button>
-                
-                
             </div>
         </div>
     </div>
