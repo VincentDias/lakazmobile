@@ -1,53 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1>Article</h1>
-            </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h1>{{ article.name }}</h1>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-4">
-                        <a href="{{ asset('upload/article_images/' ~ article.articleImage) }}" data-lightbox="image_produit"><img src="{{ asset('upload/article_images/' ~ article.articleImage) }}" alt="{{(article.articleImage.alt)}}"/></a>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8">
-                            <h1>{{ article.name }}</h1>
-                            <div>{{ article.description | raw }}</div>
-                    </div>   
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-4">
+             <a href="{{ asset('upload/article_images/' ~ article.articleImage) }}" data-lightbox="image_produit"><img src="{{ asset('upload/article_images/' ~ article.articleImage) }}" alt="{{(article.articleImage.alt)}}" width="100%"/></a>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 row justify-content-center">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-center">
                 </div>
             </div>
-        </div>
-
-        {% if is_granted("ROLE_ADMIN") %}
-        <div class="row text-center">
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <button class="btn btn-warning" type="button">
-                    <a href="{{ path('article_edit', { 'id': article.id }) }}">Modifier l'article</a>
-                </button>
-            </div>
-
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <button class="btn btn-warning" type="button">
-                    <a href="{{ path('articleimage_edit', { 'id': article.id }) }}">Modifier l'image</a>
-                </button>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-center">
+                    <article>{{ article.description | raw }}</article>
+                </div>   
             </div>
         </div>
+    </div>
 
-            {{ form_start(delete_form) }}
-            <div class="col-12 text-center">
-                <button class="btn btn-warning" type="submit" value="Delete">Supprimer</button>
-            </div>
-            {{ form_end(delete_form) }}
-        {% endif %}
-
-        <div class="row">
-            <div class="col-12 text-center">
-                <button class="btn btn-warning" type="button">
-                    <a href="{{ path('article_index') }}">Back to the list</a>
-                </button>
-            </div>
+    {% if is_granted("ROLE_ADMIN") %}
+    <div class="row text-center">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('articleimage_edit', { 'id': article.id }) }}">Modifier l'image</a>
+            </button>
         </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('article_edit', { 'id': article.id }) }}">Modifier l'article</a>
+            </button>
+        </div>
+    </div>
+
+    {{ form_start(delete_form) }}
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button class="btn btn-danger" type="submit" value="Delete">Supprimer</button>
+        </div>
+    {{ form_end(delete_form) }}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('article_index') }}">Retour aux articles</a>
+            </button>
+        </div>
+    </div>
 {% endblock %}

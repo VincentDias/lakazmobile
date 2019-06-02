@@ -1,39 +1,46 @@
 {% for plat in plats %}
 
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit">
-                            <img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}" width="100%"/>
-                            </a>
-                        </div>
-                    
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 card-body">
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <h3>
-                                        {{ plat.name }}
-                                    </h3>
-                                </div>
-                            </div>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit">
+                <img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}" width="70%"/>
+                </a>
+            </div>
+        
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h3>
+                            {{ plat.name }}
+                        </h3>
+                    </div>
+                </div>
 
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <article class="card-text">
-                                        {{ plat.description | raw }}
-                                    </article>
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <article class="card-text">
+                            {{ plat.description | raw }}
+                        </article>
+                    </div>
+                </div>
 
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <span>
-                                        {{ plat.price }}€
-                                    </span>
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <span>
+                            {{ plat.price }}€
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <span>
+                            {{ plat.available }}
+                        </span>
+                    </div>
+                </div>
 
-                        </div>
+            </div>
         </div>
 
         <div class="row">

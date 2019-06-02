@@ -1,53 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
+
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <h1>{{ plat.name }}</h1>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="row justify-content-around">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-4">
                 <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit"><img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}" width="100%"/></a>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-5">
-                
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div>{{ plat.description | raw }}</div>
+            <div class="col-sm-12 col-md-12 col-lg-6 row justify-content-center">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-center">
+                    </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div>{{ plat.price }}</div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-center">
+                        <div>{{ plat.description | raw }}</div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div>Prix : {{ plat.price }}€</div>
+                    </div>
                 </div>
-
             </div> 
         </div>
 
         {% if is_granted("ROLE_ADMIN") %}
         <div class="row text-center">
-            <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <button class="btn btn-warning" type="button">
                     <a href="{{ path('image_edit', { 'id': plat.id }) }}">Modifier l'image</a>
                 </button>
             </div>
 
-            <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <button class="btn btn-warning" type="button">
                     <a href="{{ path('plat_edit', { 'id': plat.id }) }}">Modifier le plat</a>
                 </button>
             </div>
         </div>
 
-            {{ form_start(delete_form) }}
-            <div class="col-12 text-center">
+        {{ form_start(delete_form) }}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <button class="btn btn-danger" type="submit" value="Delete">Supprimer</button>
             </div>
-            {{ form_end(delete_form) }}
+        {{ form_end(delete_form) }}
         {% endif %}
 
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <button class="btn btn-warning" type="button">
                     <a href="{{ path('plat_index') }}">Retour aux plats</a>
                 </button>

@@ -30,7 +30,7 @@ class PlatController extends Controller
         
 
         $entrees = $em->getRepository('AppBundle:Plat')->findBy(
-            array("categoryName"=>1, "available"=>1)
+            array("categoryName"=>1)
         );
         $plats = $em->getRepository('AppBundle:Plat')->findBy(
             array("categoryName"=>2, "available"=>1)
