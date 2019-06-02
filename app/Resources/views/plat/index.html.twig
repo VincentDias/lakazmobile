@@ -21,13 +21,13 @@
     </div>
        
 
+    {% if is_granted("ROLE_ADMIN") %}
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            {% if is_granted("ROLE_ADMIN") %}
-                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter une nouvelle entrée</a></button>
-            {% endif %}
+            <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter un plat</a></button>
         </div>
     </div>
+    {% endif %}
     
     
     <div class="row">
@@ -36,15 +36,17 @@
         </div>
     </div>
 
-     {% include 'plat/list.html' with {plats: plats} %}
+    <div class="row">
+        {% include 'plat/list.html' with {plats: plats} %}
+    </div>
     
+    {% if is_granted("ROLE_ADMIN") %}
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            {% if is_granted("ROLE_ADMIN") %}
-                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}" >Ajouter un nouveau plat</a></button>
-            {% endif %}
+            <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter un plat</a></button>
         </div>
     </div>
+    {% endif %}
 
 
 
@@ -53,19 +55,18 @@
             <h2>Desserts</h2>
         </div>
     </div>
-            
-    {% include 'plat/list.html' with {plats: desserts} %}
-
-
+    <div class="row">       
+        {% include 'plat/list.html' with {plats: desserts} %}
+    </div>
+    
+    {% if is_granted("ROLE_ADMIN") %}
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            {% if is_granted("ROLE_ADMIN") %}
-                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter un nouveau dessert</a></button>
-            {% endif %}
+            <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter un plat</a></button>
         </div>
     </div>
+    {% endif %}
    
-
 
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
@@ -73,15 +74,18 @@
         </div>
     </div>
 
-    {% include 'plat/list.html' with {plats: boissons} %}
+    <div class="row">   
+        {% include 'plat/list.html' with {plats: boissons} %}
+    </div>
 
+
+    {% if is_granted("ROLE_ADMIN") %}
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            {% if is_granted("ROLE_ADMIN") %}
-                <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter une nouvelle boisson </a></button>
-            {% endif %}
+            <button type"button" class="btn btn-warning"><a href="{{ path('plat_new') }}">Ajouter une boisson </a></button>
         </div>
     </div>
+    {% endif %}
       
 {% endblock %}
 
