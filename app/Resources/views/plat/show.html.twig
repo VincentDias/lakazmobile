@@ -1,4 +1,7 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="/assets/css/lightbox.min.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
 
@@ -57,4 +60,7 @@
                 </button>
             </div>
         </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="/assets/js//lightbox-plus-jquery.min.js"></script>
 {% endblock %}
