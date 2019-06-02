@@ -1,16 +1,16 @@
 {% for plat in plats %}
 
     <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="row text-center">
+        <div class="row text-center justify-content-center">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                 <a href="{{ asset('upload/images/' ~ plat.image) }}" data-lightbox="image_produit">
                 <img src="{{ asset('upload/images/' ~ plat.image) }}" alt="{{(plat.image.alt)}}" width="70%"/>
                 </a>
             </div>
         
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6 card-body">
+            <div class="col-12 col-sm-10 col-md-10 col-lg-6 card-body">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <h3>
                             {{ plat.name }}
                         </h3>
@@ -28,14 +28,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
                         <span>
-                            {{ plat.price }}€
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                        <span>
-                            {{ plat.available }}
+                           <strong>Prix: {{ plat.price }}€</strong>
                         </span>
                     </div>
                 </div>
@@ -43,17 +36,15 @@
             </div>
         </div>
 
+        {% if is_granted("ROLE_ADMIN") %}
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-
-                {% if is_granted("ROLE_ADMIN") %}
-                    <a href="{{ path('plat_show', { 'id': plat.id }) }}">
-                        <button class="btn btn-warning" type="button">Modifier</button>
-                    </a>
-                
-                {% endif %}
+                <a href="{{ path('plat_show', { 'id': plat.id }) }}">
+                    <button class="btn btn-warning" type="button">Modifier</button>
+                </a>     
             </div>       
         </div>
+        {% endif %}
     </div>
 
 {% endfor %}
