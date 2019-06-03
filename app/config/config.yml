@@ -89,5 +89,10 @@ fos_ck_editor:
         my_config:
             toolbar: standard
 
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
 
 

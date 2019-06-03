@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Article
@@ -46,50 +48,16 @@ class Article
     private $articleImage;
 
     /**
-     * @var \DateTime
-     * 
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $date;
-
-    public function __construct()
-    {
-        $this->created = new \DateTime("now");
-    }
+    protected $createdAt;
 
     /**
-     * @var datetime $created
-     *
-     * @ORM\Column(type="datetime", options={"default":"2019-01-01"})
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
-    protected $created;
-
-    /**
-     * @var datetime $updated
-     * 
-     * @ORM\Column(type="datetime", nullable = true, options={"default":"2019-01-01"})
-     */
-    protected $updated;
-
-    /**
-     * Gets triggered only on insert
-     * @ORM\PrePersist 
-     * 
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
-
-    /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
-    }
-
+    protected $updatedAt;
 
     /**
      * Get id.
@@ -166,6 +134,23 @@ class Article
     {
         return $this->articleImage;
     }
+
+    /**
+     * return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->createdAt;
+    }
+
 
     public function __toString()
     {
