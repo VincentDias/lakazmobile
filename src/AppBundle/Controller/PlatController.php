@@ -33,13 +33,13 @@ class PlatController extends Controller
             array("categoryName"=>1)
         );
         $plats = $em->getRepository('AppBundle:Plat')->findBy(
-            array("categoryName"=>2, "available"=>1)
+            array("categoryName"=>2)
         );
         $desserts = $em->getRepository('AppBundle:Plat')->findBy(
-            array("categoryName"=>3, "available"=>1)
+            array("categoryName"=>3)
         );
         $boissons = $em->getRepository('AppBundle:Plat')->findBy(
-            array("categoryName"=>4, "available"=>1)
+            array("categoryName"=>4)
         );
 
         return $this->render('plat/index.html.twig', array(
