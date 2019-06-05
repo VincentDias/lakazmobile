@@ -91,5 +91,14 @@
 
 
 {% block javascripts %}
+    <script>
+        
+        var available = document.getElementsByClassName('1');
+            for( i = 0; i < available.length ; i++){
+                available[i].innerHTML = 'Ce produit n\'est pas disponible pour le moment';
+                available[i].style.color = 'red';
+  	        }
+
+    </script>
     <script src="/assets/js//lightbox-plus-jquery.min.js"></script>
 {% endblock %}

@@ -63,6 +63,42 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         if($request->isMethod('post')){ 
             var_dump($_POST);
+
+            /*$message = (new \Swift_Message('Hello Email'))
+                ->setFrom('send@example.com')
+                ->setTo('recipient@example.com')
+                ->setBody(
+                    $this->renderView(
+                        // app/Resources/views/Emails/registration.html.twig
+                        'Emails/contact.html.twig',
+                        ['name' => $name]
+                    ),
+                    'text/html'
+                )
+                
+                * If you also want to include a plaintext version of the message
+                 ->addPart(
+                    $this->renderView(
+                        'Emails/contact--.txt.twig',
+                        ['name' => $name]
+                    ),
+                    'text/plain'
+                )
+            
+            ;
+
+        $mailer->send($message);
+
+        // or, you can also fetch the mailer service this way
+    // $this->get('mailer')->send($message);
+
+    return $this->render(...);
+}
+*/
+
+
+
+
         }
         return $this->render('default/contact.html.twig');
         

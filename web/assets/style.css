@@ -18,6 +18,10 @@
 }
 }
 
+.main_container{
+    height: 545px;
+    padding-top: 50px;
+}
 
 h1{
     text-align: center !important;
