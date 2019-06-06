@@ -58,50 +58,57 @@ class DefaultController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactAction(Request $request)
-    {
+    public function contactAction(Request $request, \Swift_Mailer $mailer)
+    {    
         // replace this example code with whatever you need
         if($request->isMethod('post')){ 
-            var_dump($_POST);
 
-            /*$message = (new \Swift_Message('Hello Email'))
-                ->setFrom('send@example.com')
-                ->setTo('recipient@example.com')
+            
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $phone_number = $_POST['phone_number'];
+            $entitled = $_POST['entitled'];
+            $message = $_POST['message'];
+
+            $recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
+            $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'));
+            if ($resp->isSuccess()) {
+
+            
+
+
+            $message = (new \Swift_Message('Nouvelle demande'))
+                ->setFrom('noreply.lakazmobile@gmail.com')
+                ->setTo('lakazmobile.test@gmail.com')
                 ->setBody(
                     $this->renderView(
                         // app/Resources/views/Emails/registration.html.twig
                         'Emails/contact.html.twig',
-                        ['name' => $name]
+                        ['firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'phone_number' => $phone_number,
+                        'email' => $email,
+                        'entitled' => $entitled,
+                        'message' => $message
+                        ]
                     ),
                     'text/html'
                 )
-                
-                * If you also want to include a plaintext version of the message
-                 ->addPart(
-                    $this->renderView(
-                        'Emails/contact--.txt.twig',
-                        ['name' => $name]
-                    ),
-                    'text/plain'
-                )
-            
             ;
 
-        $mailer->send($message);
+            $mailer->send($message);
+            
 
-        // or, you can also fetch the mailer service this way
-    // $this->get('mailer')->send($message);
+            } else {
+            $errors = $resp->getErrorCodes();
+            var_dump($errors);
+            }
+            
 
-    return $this->render(...);
-}
-*/
-
-
-
-
-        }
-        return $this->render('default/contact.html.twig');
+        } return $this->render('default/contact.html.twig');
         
     }
+        
     
 }

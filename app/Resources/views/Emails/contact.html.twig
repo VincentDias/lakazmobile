@@ -1,10 +1,24 @@
 <h3>Vous avez reçu un message</h3>
 
-Hi {{ firstname }}! You're successfully registered.
 
-{# example, assuming you have a route named "login" #}
+Bonjour,
+</br>
+</br>
+<strong>{{firstname}} {{lastname}}</strong> vous a envoyé un message.
+</br>
+</br>
+<strong>{{entitled}}</strong>
+</br>
+{{message}}
+</br>
+</br>
+<strong>mail :</strong> {{email}}
+</br>
+<strong>numéro de mobile:</strong> {{phone_number}}
 
-Thanks!
+    
+
+
 
 {# Makes an absolute URL to the /images/logo.png file #}
-<img src="{{ absolute_url(asset('images/logo.png')) }}">
+<!--<img src="{{ absolute_url(asset('images/logo.png')) }}">

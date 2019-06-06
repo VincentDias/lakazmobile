@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
 
+{% endblock %}
 {% block body %}
 
     <div class="row">
@@ -8,7 +12,7 @@
         </div>
     </div>
     <div class="row text-center justify-content-center">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 row align-items-center justify-content-center">
             <img src="{{asset('images/signature-gmailok.png')}}" width="40%"/>
         </div> 
         <div class="col-12 col-sm-12 col-md-8 col-lg-6">
@@ -16,26 +20,32 @@
             <form method="post">
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" placeholder="Nom" name="firstname" required>
+                        <input type="text" class="form-control" placeholder="Prénom" name="firstname" required>
                     </div>
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" placeholder="Prénom" name="lastname" required>
+                        <input type="text" class="form-control" placeholder="Nom" name="lastname" required>
+                    </div>
+                    <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
+                        <input type="tel" class="form-control" placeholder="Numéro de téléphone" name="phone_number" required>
                     </div>
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
                         <input type="email" class="form-control" placeholder="Email" name="email" required>
                     </div>
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
                         <select class="custom-select mr-sm-2" name="entitled">
-                            <option value="" selected="selected">- Sélectionner -</option>
-                            <option value="demande">Demande</option>
-                            <option value="festival">Festival</option>
-                            <option value="mariage">Mariage</option>
+                            <option value="Demande">Demande</option>
+                            <option value="Festival">Festival</option>
+                            <option value="Mariage">Mariage</option>
                         </select>
                     </div>
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
                         <textarea class="form-control" rows="5" placeholder="Votre message" name="message" required></textarea>
                     </div>
                 </div>
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="g-recaptcha" data-sitekey="6LdVZKcUAAAAAAJR8o6gqxvQutnEPkoFXqTa0uO3"></div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             
             </form>

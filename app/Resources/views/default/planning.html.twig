@@ -1,41 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Planning</h1>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10" id="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 44.8333, lng:  -0.5667},
+            zoom: 14
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD09Zzcacp769g-9bcziqyj-xgTHGxx9rY&callback=initMap" 
+async defer></script>
 {% endblock %}
-
-
-
-{% block javascripts %}
-{% endblock %}
-
-
-
-{% block stylesheets %}
- 
-
- {% endblock %}
