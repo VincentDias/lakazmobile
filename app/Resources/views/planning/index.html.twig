@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h1>Planning de la Kaz Mobile</h1>
+        </div>
+    </div>
+
+    {% for planning in plannings %}
+    <div class="row justify-content-center">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-10">
+            <img src="{{ asset('upload/planning/' ~ planning.path) }}" alt="" width="100%"/>
+        </div>
+    </div>
+
+        {% if is_granted("ROLE_ADMIN") %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                <button class="btn btn-warning" type="button">
+                    <a href="{{ path('planning_edit', { 'id': planning.id }) }}">Modifier</a>
+                </button>                   
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}

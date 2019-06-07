@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h1>Modification du planning</h1>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center form-group">
+        <div class="col-10 col-sm-10 col-md-8 col-lg-8 text-center">
+            {{ form_start(edit_form, {'attr':{'novalidate': 'novalidate'}}) }}
+    
+            {{ form_label(edit_form.path, 'Image')}}
+            {{ form_widget(edit_form.path, {'attr':{'class':'form-control'}})}}
+            {{ form_errors(edit_form.path)}}
+        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            {{ form_widget(edit_form) }}
+            <input class="btn btn-warning" type="submit" value="Enregistrer"/>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+    
+     
+{% endblock %}

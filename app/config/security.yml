@@ -38,3 +38,4 @@ security:
         - { path: ^/origine-des-produits/new, role: ROLE_ADMIN }
         - { path: ^/articleimage/new, role: ROLE_ADMIN }
         - { path: ^/articleimage/[0-9], role: ROLE_ADMIN }
+        - { path: ^/planning/admin, role: ROLE_ADMIN }

@@ -78,26 +78,26 @@ class DefaultController extends Controller
             
 
 
-            $message = (new \Swift_Message('Nouvelle demande'))
-                ->setFrom('noreply.lakazmobile@gmail.com')
-                ->setTo('lakazmobile.test@gmail.com')
-                ->setBody(
-                    $this->renderView(
-                        // app/Resources/views/Emails/registration.html.twig
-                        'Emails/contact.html.twig',
-                        ['firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'phone_number' => $phone_number,
-                        'email' => $email,
-                        'entitled' => $entitled,
-                        'message' => $message
-                        ]
-                    ),
-                    'text/html'
-                )
-            ;
+                $message = (new \Swift_Message('Nouvelle demande'))
+                    ->setFrom('noreply.lakazmobile@gmail.com')
+                    ->setTo('lakazmobile.test@gmail.com')
+                    ->setBody(
+                        $this->renderView(
+                            // app/Resources/views/Emails/registration.html.twig
+                            'Emails/contact.html.twig',
+                            ['firstname' => $firstname,
+                            'lastname' => $lastname,
+                            'phone_number' => $phone_number,
+                            'email' => $email,
+                            'entitled' => $entitled,
+                            'message' => $message
+                            ]
+                        ),
+                        'text/html'
+                    )
+                ;
 
-            $mailer->send($message);
+                $mailer->send($message);
             
 
             } else {

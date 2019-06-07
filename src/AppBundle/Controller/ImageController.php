@@ -50,31 +50,29 @@ class ImageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $file stores the uploaded file
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-                $file = $image->getPathImage();
-    
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
-    
-                $file->move($this->getParameter('image_directory'), $fileName);
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $image->getPathImage();
 
-                
-                // updates the 'image' property to store the file name
-                // instead of its contents
-                $image->setPathImage($fileName);
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('image_directory'), $fileName);
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($image);
-                $em->flush();
-    
-                // ... persist the $plat variable or any other work
-    
-                return $this->redirect($this->generateUrl('image_index'));
-            }
-    
-            return $this->render('image/new.html.twig', [
-                'form' => $form->createView(),
-            ]);
+            // updates the 'image' property to store the file name
+            // instead of its contents
+            $image->setPathImage($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($image);
+            $em->flush();
+
+            // ... persist the $plat variable or any other work
+
+            return $this->redirect($this->generateUrl('image_index'));
         }
+
+        return $this->render('image/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
 
 
