@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h1>A propos de la Kaz Mobile</h1>
+        </div>
+    </div>
+
+    {% for bio in bios %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 row align-items-center justify-content-center">
+            <a href="{{ asset('upload/bio/' ~ bio.Image) }}"><img src="{{ asset('upload/bio/' ~ bio.Image) }}" alt="{{(bio.Image.alt)}}" width="85%"/></a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-6 row align-items-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-10 text-center">
+                    <h2>{{ bio.title }}</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 col-sm-10 col-md-12 col-lg-10 text-justify">
+                    <article>{{ bio.description | raw}}</article>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('bio_show', { 'id': bio.id }) }}">Modifier</a>
+            </button>                   
+        </div>
+    {% endif %}
+    <hr>
+    {% endfor %}
+       
+{% endblock %}

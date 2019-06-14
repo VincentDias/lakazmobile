@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h1>{{ bio.title }}</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-4 row align-items-center">
+             <a href="{{ asset('upload/bio/' ~ bio.Image) }}"><img src="{{ asset('upload/bio/' ~ bio.Image) }}" alt="{{(bio.Image.alt)}}" width="100%"/></a>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 row justify-content-center">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-justify">
+                    <article>{{ bio.description | raw }}</article>
+                </div>   
+            </div>
+        </div>
+    </div>
+
+    {% if is_granted("ROLE_ADMIN") %}
+    <div class="row text-center">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('bioimage_edit', { 'id': bio.id }) }}">Modifier l'image</a>
+            </button>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('bio_edit', { 'id': bio.id }) }}">Modifier le contenu</a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button class="btn btn-warning" type="button">
+                <a href="{{ path('bio_index') }}">Retour</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}

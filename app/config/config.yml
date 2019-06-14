@@ -10,6 +10,7 @@ parameters:
     image_directory: '%kernel.project_dir%/web/upload/images'
     article_image_directory: '%kernel.project_dir%/web/upload/article_images'
     planning_directory: '%kernel.project_dir%/web/upload/planning'
+    bio_directory: '%kernel.project_dir%/web/upload/bio'
 
 framework:
     #esi: ~
