@@ -98,7 +98,6 @@ class DefaultController extends Controller
                 ;
 
                 $mailer->send($message);
-            
 
             } else {
             $errors = $resp->getErrorCodes();
@@ -108,6 +107,15 @@ class DefaultController extends Controller
 
         } return $this->render('default/contact.html.twig');
         
+    }
+
+    /**
+     * @Route("/mentions-légales", name="legalnotice")
+     */
+    public function legalnoticeAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/legalnotice.html.twig');
     }
         
     
