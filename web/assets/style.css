@@ -39,8 +39,11 @@ h3{
     font-family: 'Muli', sans-serif; 
 }
 
-.btn{ 
+.btn, .btn:hover{ 
     margin:2em;
+    border-color: #05A099;
+    color: #05A099;
+    background-color: white;
 }
 
 #article{
@@ -65,7 +68,7 @@ span{
 }
 
 a, a:hover{
-    color: #2E373A;
+    color: #05A099;
 }
 
 /*
@@ -90,4 +93,6 @@ Connexion
     align-items: center;
 }
 
-
+#mentionlegales{
+    color: #2E373A;
+}
