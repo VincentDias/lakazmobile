@@ -62,18 +62,27 @@
         {% block body %}{% endblock %}
         
             <footer>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row justify-content-around">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                        
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
                         <a href="{{path('legalnotice')}}">Mentions légales</a>
+                        <a href="https://www.facebook.com/lakazmobile/"><img src="{{asset('images/')}}"/></a>                        
+                        <a href="https://www.instagram.com/lakazmobile/?hl=fr-ca"><img src="{{asset('images/')}}"/></a>
                     </div>
-                        <div class="col-sm-6 col-md-6 col-6 d-flex justify-content-center">
-                            <a href="https://www.facebook.com/lakazmobile/"><img src="{{asset('images/')}}"/></a>
-                            <a href="https://www.instagram.com/lakazmobile/?hl=fr-ca"><img src="{{asset('images/')}}"/></a>
-                        </div>
+                </div>
+
+                <div class="row justify-content-center" style="padding-top:30px;">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-6 text-center">
+                        <span>La Kaz'Mobile©2019 All rights reserved.</span>
                     </div>
+                </div>
+
             </footer>
         </div>
         <script type="text/javascript" src"{{ asset('assets/app.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>

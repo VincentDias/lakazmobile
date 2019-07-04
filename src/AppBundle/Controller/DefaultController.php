@@ -61,9 +61,8 @@ class DefaultController extends Controller
     public function contactAction(Request $request, \Swift_Mailer $mailer)
     {    
         // replace this example code with whatever you need
-        if($request->isMethod('post')){ 
-
-            
+        $is_submit = false;
+        if($request->isMethod('post')) {            
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
@@ -73,11 +72,8 @@ class DefaultController extends Controller
 
             $recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'));
+
             if ($resp->isSuccess()) {
-
-            
-
-
                 $message = (new \Swift_Message('Nouvelle demande'))
                     ->setFrom('noreply.lakazmobile@gmail.com')
                     ->setTo('lakazmobile.test@gmail.com')
@@ -98,14 +94,19 @@ class DefaultController extends Controller
                 ;
 
                 $mailer->send($message);
+                $is_submit = true;
 
             } else {
             $errors = $resp->getErrorCodes();
-            var_dump($errors);
+            
             }
             
 
-        } return $this->render('default/contact.html.twig');
+        } return $this->render(
+            'default/contact.html.twig', 
+            ['is_submit' => $is_submit,
+            ]
+        );
         
     }
 

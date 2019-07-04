@@ -1,9 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block javascripts %}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
-
-{% endblock %}
 {% block body %}
 
     <div class="row">
@@ -60,10 +55,23 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Envoyer</button>
-            
+
             </form>
         </div>
     </div>
 
        
+{% endblock %}
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        {% if is_submit == false %}
+            Swal.fire({
+                type: 'success',
+                title: 'Votre email a bien ete envoye',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        {% endif %}
+    </script>
 {% endblock %}

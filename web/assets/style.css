@@ -43,24 +43,29 @@ h3{
     margin:2em;
 }
 
+#article{
+    border: 1px solid #05A099 !important;
+    border-radius: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
 
 footer{
     font-family: 'Muli', sans-serif; 
     width:100%;
-    background-color:#2E373A;
+    background-color:#05A099;
     height: 100px;
     margin-top: 50px;
 }
 
-/*
-Page d'accueil
-*/
-.carousel{
-    height:600px;
+span{
+    color: #2E373A;
 }
-.carousel img{
-    width:600px;
-    height:800px;
+
+a, a:hover{
+    color: #2E373A;
 }
 
 /*
