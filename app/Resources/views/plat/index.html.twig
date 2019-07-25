@@ -12,11 +12,11 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" id="bandeau">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center bandeau">
             <h2>Entrées</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-around mealspace">
         {% include 'plat/list.html' with {plats: entrees} %}
     </div>
        
@@ -31,12 +31,12 @@
     
     
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" id="bandeau">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center bandeau" >
             <h2>Bokits et Plats du jour</h2>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row justify-content-around mealspace">
         {% include 'plat/list.html' with {plats: plats} %}
     </div>
     
@@ -51,11 +51,11 @@
 
 
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" id="bandeau">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center bandeau" >
             <h2>Desserts</h2>
         </div>
     </div>
-    <div class="row">       
+    <div class="row justify-content-around mealspace">       
         {% include 'plat/list.html' with {plats: desserts} %}
     </div>
     
@@ -69,12 +69,12 @@
    
 
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" id="bandeau">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center bandeau">
             <h2>Boissons</h2>
         </div>
     </div>
 
-    <div class="row">   
+    <div class="row justify-content-around mealspace">   
         {% include 'plat/list.html' with {plats: boissons} %}
     </div>
 

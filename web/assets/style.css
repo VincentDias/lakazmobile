@@ -32,6 +32,7 @@ h1{
 h2{
     color: #F76305;
     font-family: 'Muli', sans-serif;
+    margin-top: 20px;
     margin-bottom: 20px; 
 }
 h3{
@@ -46,17 +47,37 @@ h3{
     background-color: white;
 }
 
-#article{
+.article{
     border: 1px solid #05A099;
     border-radius: 25px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    margin: 15px;
 }
 
-#bandeau{
-    background-color: #E9ECEF;
+.mealspace{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.meal{
+    border: 1px solid #05A099;
+    border-radius: 25px;
+    margin: 15px;
+}
+
+.mealpics{
+    margin-top:20px;
+}
+
+.card-body{
+    margin-bottom: 25px;
+}
+
+.bandeau{
+    background-color: #05A099;
+    padding-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border: 1px solid black;
 }
 
 footer{
@@ -85,6 +106,9 @@ article{
     font-family: 'Muli', sans-serif; 
 }
 
+.article-content{
+    padding-top: 25px;
+}
 /*
 Nos menus
 */

@@ -10,8 +10,8 @@
         </div>
     </div>
     {% for article in articles|reverse %}
-    <div id="article">
-        <div class="row d-flex justify-content-center text-center">
+    <div class="article">
+        <div class="row d-flex justify-content-center text-center article-content">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 row align-items-center justify-content-center">
                 <a href="{{ asset('upload/article_images/' ~ article.articleImage) }}" data-lightbox="image_produit"><img src="{{ asset('upload/article_images/' ~ article.articleImage) }}" alt="{{(article.articleImage.alt)}}" width="70%"/></a>
             </div>
