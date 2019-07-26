@@ -102,7 +102,7 @@ class BioController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            
             return $this->redirectToRoute('bio_index', array('id' => $bio->getId()));
         }
 

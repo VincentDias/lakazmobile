@@ -115,9 +115,7 @@ class ArticleImageController extends Controller
             // $file stores the uploaded file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $articleImage->getPathImage();
-
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
             $file->move($this->getParameter('article_image_directory'), $fileName);
             
             // updates the 'image' property to store the file name

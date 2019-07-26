@@ -13,30 +13,33 @@
 
 
         <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-            <form method="post">
+            <div class="alert alert-success response-container" style="display:none;">
+                formulaire envoyé
+            </div>
+            <form method="post" class="form-container">
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" placeholder="Prénom" name="firstname" required>
+                        <input id="firstname-input" type="text" class="form-control" placeholder="Prénom" name="firstname" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" class="form-control" placeholder="Nom" name="lastname" required>
+                        <input id="lastname-input" type="text" class="form-control" placeholder="Nom" name="lastname" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="tel" class="form-control" placeholder="Numéro de téléphone" name="phone_number" required>
+                        <input id="phone_number-input" type="tel" class="form-control" placeholder="Numéro de téléphone" name="phone_number" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                        <input id="email-input" type="email" class="form-control" placeholder="Email" name="email" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <select class="custom-select mr-sm-2" name="entitled">
+                        <select id="entitled-input" class="custom-select mr-sm-2" name="entitled">
                             <option value="Demande">Demande</option>
                             <option value="Festival">Festival</option>
                             <option value="Mariage">Mariage</option>
@@ -45,7 +48,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8">
-                        <textarea class="form-control" rows="5" placeholder="Votre message" name="message" required></textarea>
+                        <textarea id="message-input" class="form-control" rows="5" placeholder="Votre message" name="message" required></textarea>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -54,12 +57,13 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                
+                <button type="button" class="btn btn-primary" id="sending">Envoyer</button>
 
             </form>
         </div>
     </div>
-
+    
        
 {% endblock %}
 {% block javascripts %}
@@ -68,10 +72,41 @@
         {% if is_submit == true %}
             Swal.fire({
                 type: 'success',
-                title: 'Votre email a bien ete envoye',
+                title: 'Votre email a bien ete envoyé',
                 showConfirmButton: false,
                 timer: 1500
             })
         {% endif %}
+        $("#sending").click(function(ev){
+            let firstname = $("#firstname-input").val();
+            let lastname = $("#lastname-input").val();
+            let email = $("#email-input").val();
+            let phone_number = $("#phone_number-input").val();
+            let entitled = $("#entitled-input").val();
+            let message = $("#message-input").val();
+
+
+            const data = {
+                firstname : firstname,
+                lastname : lastname,
+                email : email,
+                phone_number : phone_number,
+                entilted : entitled,
+                message : message,
+            };
+            $.ajax({
+                url : "/contact/api",
+                method: 'post',
+                data: data
+            }).then(function(data){
+                if (data.response == "ok") {
+                    $(".form-container").slideUp();
+                    $(".response-container").slideDown();
+                }
+            }).catch(function(error){
+                // SI Y A UNE ERROR
+                console.log(error);
+            });
+        });
     </script>
 {% endblock %}

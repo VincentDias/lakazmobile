@@ -105,7 +105,7 @@ class ImageController extends Controller
         $editForm->handleRequest($request);
 
         $image_plat=$image->getPathImage();
-        $pathImage=$this->getParameter('article_image_directory').'/'.$image_plat;
+        $pathImage=$this->getParameter('image_directory').'/'.$image_plat;
 
         $fs= new Filesystem();
         $fs->remove(array($pathImage));
@@ -115,9 +115,7 @@ class ImageController extends Controller
             // $file stores the uploaded file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $image->getPathImage();
-
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
             $file->move($this->getParameter('image_directory'), $fileName);
 
             // updates the 'image' property to store the file name

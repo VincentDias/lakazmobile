@@ -122,7 +122,6 @@ class PlatController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('plat_index', array('id' => $plat->getId()));
