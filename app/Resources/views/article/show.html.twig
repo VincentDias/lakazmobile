@@ -10,13 +10,13 @@
         </div>
     </div>
 
-    <div class="row justify-content-around">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-4 row align-items-center">
+    <div class="row justify-content-around align-items-center">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-6 article-content">
              <a href="{{ asset('upload/article_images/' ~ article.articleImage) }}" data-lightbox="image_produit"><img src="{{ asset('upload/article_images/' ~ article.articleImage) }}" alt="{{(article.articleImage.alt)}}" width="100%"/></a>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 row justify-content-center">
+        <div class="col-sm-12 col-md-12 col-lg-6 article-content">
             <div class="row justify-content-center align-items-center">
-                <div class="col-12 col-sm-12 col-md-10 col-lg-12 text-justify">
+                <div class="col-10 col-sm-10 col-md-10 col-lg-10 text-justify">
                     <article>{{ article.description | raw }}</article>
                 </div>   
             </div>
