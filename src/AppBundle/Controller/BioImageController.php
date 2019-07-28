@@ -85,9 +85,6 @@ class BioImageController extends Controller
         $image=$bioImage->getPathImage();
         $pathImage=$this->getParameter('bio_directory').'/'.$image;
 
-        $fs= new Filesystem();
-        $fs->remove(array($pathImage));
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             // $file stores the uploaded file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
@@ -99,8 +96,9 @@ class BioImageController extends Controller
             // instead of its contents
             $bioImage->setPathImage($fileName);
 
-
             $this->getDoctrine()->getManager()->flush();
+            $fs= new Filesystem();
+            $fs->remove(array($pathImage));
 
             return $this->redirectToRoute('bioimage_index', array('id' => $bioImage->getId()));
         }

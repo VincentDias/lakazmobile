@@ -80,11 +80,9 @@ class BioController extends Controller
      */
     public function showAction(Bio $bio)
     {
-        $deleteForm = $this->createDeleteForm($bio);
-
+        
         return $this->render('bio/show.html.twig', array(
-            'bio' => $bio,
-            'delete_form' => $deleteForm->createView(),
+            'bio' => $bio
         ));
     }
 

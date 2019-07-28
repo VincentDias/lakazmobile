@@ -96,7 +96,7 @@ class DefaultController extends Controller
                 return new JsonResponse([ "response" => "ok" ], 200);
             } else {
             $errors = $resp->getErrorCodes();
-            return new JsonResponse([ "response" => "error" ], 400);
+            return new JsonResponse([ "response" => $errors ], 400);
             } 
         
         return new JsonResponse([ "response" =>  [

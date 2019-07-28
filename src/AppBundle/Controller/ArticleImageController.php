@@ -106,8 +106,7 @@ class ArticleImageController extends Controller
         $image=$articleImage->getPathImage();
         $pathImage=$this->getParameter('article_image_directory').'/'.$image;
 
-        $fs= new Filesystem();
-        $fs->remove(array($pathImage));
+        
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
@@ -123,6 +122,8 @@ class ArticleImageController extends Controller
 
 
             $this->getDoctrine()->getManager()->flush();
+            $fs= new Filesystem();
+            $fs->remove(array($pathImage));
 
             return $this->redirectToRoute('article_index', array('id' => $articleImage->getId()));
         }

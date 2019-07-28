@@ -106,9 +106,6 @@ class ImageController extends Controller
         $image_plat=$image->getPathImage();
         $pathImage=$this->getParameter('image_directory').'/'.$image_plat;
 
-        $fs= new Filesystem();
-        $fs->remove(array($pathImage));
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
             // $file stores the uploaded file
@@ -123,6 +120,8 @@ class ImageController extends Controller
 
 
             $this->getDoctrine()->getManager()->flush();
+            $fs= new Filesystem();
+            $fs->remove(array($pathImage));
 
             return $this->redirectToRoute('plat_show', array('id' => $image->getId()));
         }
