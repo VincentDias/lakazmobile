@@ -12,6 +12,13 @@
     color: #05A099 !important;
 }
 
+.nav-item{
+    display: flex !important;
+    flex-direction: justify !important;
+    justify-content: center !important;
+
+}
+
 @media (min-width: 992px){
 .navbar-expand-lg .navbar-collapse {
     justify-content: center;
