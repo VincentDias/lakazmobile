@@ -25,7 +25,7 @@ class BioImage
     /**
      * @var string
      *
-     * @ORM\Column(name="PathImage", type="string", length=255)
+     * @ORM\Column(name="pathImage", type="string", length=255)
      * 
      * @Assert\NotBlank(message="Veuillez insérer le bon format de fichier")
      * @Assert\File(mimeTypes={"image/jpeg", "image/png"})
