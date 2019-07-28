@@ -82,7 +82,6 @@ class CategoryController extends Controller
      */
     public function editAction(Request $request, Category $category)
     {
-        $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('AppBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
 
@@ -95,7 +94,6 @@ class CategoryController extends Controller
         return $this->render('category/edit.html.twig', array(
             'category' => $category,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

@@ -95,7 +95,6 @@ class PlanningController extends Controller
      */
     public function editAction(Request $request, Planning $planning)
     {
-        $deleteForm = $this->createDeleteForm($planning);
         $editForm = $this->createForm('AppBundle\Form\PlanningType', $planning);
         $editForm->handleRequest($request);
 
@@ -130,7 +129,6 @@ class PlanningController extends Controller
         return $this->render('planning/edit.html.twig', array(
             'planning' => $planning,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

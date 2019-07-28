@@ -117,7 +117,6 @@ class PlatController extends Controller
      */
     public function editAction(Request $request, Plat $plat)
     {
-        $deleteForm = $this->createDeleteForm($plat);
         $editForm = $this->createForm('AppBundle\Form\PlatType1', $plat);
         $editForm->handleRequest($request);
 
@@ -130,7 +129,6 @@ class PlatController extends Controller
         return $this->render('plat/edit.html.twig', array(
             'plat' => $plat,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

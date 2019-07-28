@@ -79,7 +79,6 @@ class BioImageController extends Controller
      */
     public function editAction(Request $request, BioImage $bioImage)
     {
-        $deleteForm = $this->createDeleteForm($bioImage);
         $editForm = $this->createForm('AppBundle\Form\BioImageType', $bioImage);
         $editForm->handleRequest($request);
 
@@ -109,7 +108,6 @@ class BioImageController extends Controller
         return $this->render('bioimage/edit.html.twig', array(
             'bioImage' => $bioImage,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

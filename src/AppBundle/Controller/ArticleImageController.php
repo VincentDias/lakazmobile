@@ -100,7 +100,6 @@ class ArticleImageController extends Controller
      */
     public function editAction(Request $request, ArticleImage $articleImage)
     {
-        $deleteForm = $this->createDeleteForm($articleImage);
         $editForm = $this->createForm('AppBundle\Form\ArticleImageType', $articleImage);
         $editForm->handleRequest($request);
 
@@ -131,7 +130,6 @@ class ArticleImageController extends Controller
         return $this->render('articleimage/edit.html.twig', array(
             'articleImage' => $articleImage,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

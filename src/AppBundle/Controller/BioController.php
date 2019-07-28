@@ -96,7 +96,6 @@ class BioController extends Controller
      */
     public function editAction(Request $request, Bio $bio)
     {
-        $deleteForm = $this->createDeleteForm($bio);
         $editForm = $this->createForm('AppBundle\Form\BioType1', $bio);
         $editForm->handleRequest($request);
 
@@ -109,7 +108,6 @@ class BioController extends Controller
         return $this->render('bio/edit.html.twig', array(
             'bio' => $bio,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

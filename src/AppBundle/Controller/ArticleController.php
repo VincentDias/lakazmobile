@@ -100,7 +100,6 @@ class ArticleController extends Controller
      */
     public function editAction(Request $request, Article $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('AppBundle\Form\ArticleType1', $article);
         $editForm->handleRequest($request);
 
@@ -115,7 +114,6 @@ class ArticleController extends Controller
         return $this->render('article/edit.html.twig', array(
             'article' => $article,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
