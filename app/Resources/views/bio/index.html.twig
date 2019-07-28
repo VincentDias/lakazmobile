@@ -10,16 +10,16 @@
 
     {% for bio in bios %}
     <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-10 col-sm-10 col-md-10 col-lg-6 ">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-6 d-flex justify-content-center">
             <img src="{{ asset('upload/bio/' ~ bio.Image.pathImage) }}" alt="{{(bio.Image.alt)}}" width="85%"/>
         </div>
         <div class="col-10 col-sm-10 col-md-10 col-lg-6 justify-content-center flex-column">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-10 col-sm-10 col-md-10 col-lg-10 text-center">
                     <h2>{{ bio.title }}</h2>
                 </div>
             </div>
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 <div class="col-10 col-sm-10 col-md-10 col-lg-10 text-justify">
                     <article>{{ bio.description | raw}}</article>
                 </div>

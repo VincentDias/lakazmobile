@@ -100,7 +100,7 @@ class BioImageController extends Controller
             $fs= new Filesystem();
             $fs->remove(array($pathImage));
 
-            return $this->redirectToRoute('bioimage_index', array('id' => $bioImage->getId()));
+            return $this->redirectToRoute('bio_index', array('id' => $bioImage->getId()));
         }
 
         return $this->render('bioimage/edit.html.twig', array(
