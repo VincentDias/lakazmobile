@@ -123,7 +123,7 @@ class ImageController extends Controller
             $fs= new Filesystem();
             $fs->remove(array($pathImage));
 
-            return $this->redirectToRoute('plat_show', array('id' => $image->getId()));
+            return $this->redirectToRoute('plat_index');
         }
 
         return $this->render('image/edit.html.twig', array(
