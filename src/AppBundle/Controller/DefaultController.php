@@ -67,8 +67,39 @@ class DefaultController extends Controller
             $phone_number = isset($_POST['phone_number']) && !empty($_POST['phone_number']) ?  $_POST['phone_number'] : '';
             $entitled = isset($_POST['entitled']) && !empty($_POST['entitled']) ?  $_POST['entitled'] : '';
             $message = isset($_POST['message']) && !empty($_POST['message']) ?  $_POST['message'] : '';
-
+            $captcha = $_POST['captcha'];
+            
             $recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
+            $resp = $recaptcha->verify($captcha);
+
+            $validation = false;
+            $sent = false;
+            if ($resp->isSuccess()) {
+                $validation = true;
+                $message = (new \Swift_Message('Nouvelle demande'))
+                    ->setFrom('lakazmobile.test@gmail.com')
+                    ->setTo('lakazmobile.test@gmail.com')
+                    ->setBody(
+                        $this->renderView(
+                            // app/Resources/views/Emails/registration.html.twig
+                            'Emails/contact.html.twig',
+                            ['firstname' => $firstname,
+                            'lastname' => $lastname,
+                            'phone_number' => $phone_number,
+                            'email' => $email,
+                            'entitled' => $entitled,
+                            'message' => $message
+                            ]
+                        ),
+                        'text/html'
+                    )
+                ;
+
+                $sent = $mailer->send($message);
+            }
+            
+            
+            /*$recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'));
 
             if ($resp->isSuccess()) {
@@ -97,15 +128,12 @@ class DefaultController extends Controller
             } else {
             $errors = $resp->getErrorCodes();
             return new JsonResponse([ "response" => $errors ], 400);
-            } 
+            } */
         
         return new JsonResponse([ "response" =>  [
-            "firstname" => $firstname, 
-            "lastname" => $lastname,
-            "email"=> $email,
-            "phone_number" => $phone_number,
-            "entilted" => $entitled,
-            "message" => $message,
+            
+            "validation" => $validation,
+            "sent" => $sent
             ]
         ], 200);
         
@@ -126,6 +154,7 @@ class DefaultController extends Controller
             $phone_number = $_POST['phone_number'];
             $entitled = $_POST['entitled'];
             $message = $_POST['message'];
+            
 
             $recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'));

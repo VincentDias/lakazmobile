@@ -69,14 +69,7 @@
 {% block javascripts %}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-        {% if is_submit == true %}
-            Swal.fire({
-                type: 'success',
-                title: 'Votre email a bien ete envoyé',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        {% endif %}
+       
         $("#sending").click(function(ev){
             let firstname = $("#firstname-input").val();
             let lastname = $("#lastname-input").val();
@@ -84,22 +77,23 @@
             let phone_number = $("#phone_number-input").val();
             let entitled = $("#entitled-input").val();
             let message = $("#message-input").val();
-
+            let captcha = grecaptcha.getResponse();
 
             const data = {
                 firstname : firstname,
                 lastname : lastname,
                 email : email,
                 phone_number : phone_number,
-                entilted : entitled,
+                entitled : entitled,
                 message : message,
+                captcha : captcha
             };
             $.ajax({
                 url : "/contact/api",
                 method: 'post',
                 data: data
             }).then(function(data){
-                if (data.response == "ok") {
+                if (data.response && data.response.validation == true && data.response.sent == 1) {
                     $(".form-container").slideUp();
                     $(".response-container").slideDown();
                 }
