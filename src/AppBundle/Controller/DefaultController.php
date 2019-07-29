@@ -67,7 +67,8 @@ class DefaultController extends Controller
             $phone_number = isset($_POST['phone_number']) && !empty($_POST['phone_number']) ?  $_POST['phone_number'] : '';
             $entitled = isset($_POST['entitled']) && !empty($_POST['entitled']) ?  $_POST['entitled'] : '';
             $message = isset($_POST['message']) && !empty($_POST['message']) ?  $_POST['message'] : '';
-            $captcha = $_POST['captcha'];
+            $captcha = isset($_POST['captcha']) && !empty($_POST['captcha']) ?  $_POST['captcha'] : '';
+    
             
             $recaptcha = new \ReCaptcha\ReCaptcha('6LdVZKcUAAAAAFePwGI8_YOnnGeaLO3Cz-827zN8');
             $resp = $recaptcha->verify($captcha);
